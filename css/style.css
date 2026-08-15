@@ -344,6 +344,40 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+.cal-btn {
+  margin-bottom: 14px;
+  padding: 8px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--rose);
+  background: #fff;
+  color: var(--rose-deep);
+  font-size: 13px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.cal-btn.on {
+  background: var(--rose);
+  color: #fff;
+  animation: pulse 1.2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 129, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(255, 107, 129, 0); }
+}
+
+.lyric.marked { color: var(--rose-deep); }
+
+.lyric em {
+  font-style: normal;
+  font-size: 12px;
+  color: #c98a96;
+  margin-left: 6px;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
 /* ---------- 彩蛋 ---------- */
 .card3d {
   width: 280px;

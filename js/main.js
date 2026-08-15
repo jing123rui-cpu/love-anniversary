@@ -182,6 +182,20 @@
   audio.addEventListener('loadedmetadata', showTime);
   audio.addEventListener('durationchange', showTime);
 
+  function saveCal() {
+    try { localStorage.setItem('love_anniversary_cal', JSON.stringify(LYRICS.map(function (l) { return l.秒; }))); } catch (e) {}
+  }
+
+  let savedCal = null;
+  try { savedCal = JSON.parse(localStorage.getItem('love_anniversary_cal') || 'null'); } catch (e) {}
+  if (savedCal && savedCal.length === LYRICS.length) {
+    LYRICS.forEach(function (l, i) { l.秒 = savedCal[i]; });
+    lines.forEach(function (c, i) {
+      c.classList.add('marked');
+      c.innerHTML = LYRICS[i].词 + ' <em>' + fmtTime(LYRICS[i].秒) + '</em>';
+    });
+  }
+
   lbx.addEventListener('click', (e) => {
     const c = e.target.closest('.lyric');
     if (!c) return;
@@ -191,6 +205,7 @@
       LYRICS[i].秒 = t;
       c.classList.add('marked');
       c.innerHTML = LYRICS[i].词 + ' <em>' + fmtTime(t) + '</em>';
+      saveCal();
     }
     setActive(i);
   });

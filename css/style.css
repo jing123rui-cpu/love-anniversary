@@ -336,6 +336,14 @@ body {
   color: transparent;
 }
 
+.play-time {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #c98a96;
+  letter-spacing: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
 /* ---------- 彩蛋 ---------- */
 .card3d {
   width: 280px;

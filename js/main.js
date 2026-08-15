@@ -167,6 +167,21 @@
 
   audio.addEventListener('timeupdate', syncLyric);
 
+  function fmtTime(t) {
+    if (!isFinite(t)) t = 0;
+    const m = Math.floor(t / 60);
+    const s = Math.floor(t % 60);
+    return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function showTime() {
+    $('playTime').textContent = fmtTime(audio.currentTime) + ' / ' + fmtTime(audio.duration);
+  }
+
+  audio.addEventListener('timeupdate', showTime);
+  audio.addEventListener('loadedmetadata', showTime);
+  audio.addEventListener('durationchange', showTime);
+
   lbx.addEventListener('click', (e) => {
     const c = e.target.closest('.lyric');
     if (c) setActive(lines.indexOf(c));

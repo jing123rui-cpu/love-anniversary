@@ -184,7 +184,23 @@
 
   lbx.addEventListener('click', (e) => {
     const c = e.target.closest('.lyric');
-    if (c) setActive(lines.indexOf(c));
+    if (!c) return;
+    const i = lines.indexOf(c);
+    if (calMode) {
+      const t = Math.round(audio.currentTime * 10) / 10;
+      LYRICS[i].秒 = t;
+      c.classList.add('marked');
+      c.innerHTML = LYRICS[i].词 + ' <em>' + fmtTime(t) + '</em>';
+    }
+    setActive(i);
+  });
+
+  const calBtn = $('calBtn');
+  let calMode = false;
+  calBtn.addEventListener('click', () => {
+    calMode = !calMode;
+    calBtn.classList.toggle('on', calMode);
+    calBtn.textContent = calMode ? '校准中：听到哪句点哪句' : '校准歌词';
   });
 
   const dots = $('dots');

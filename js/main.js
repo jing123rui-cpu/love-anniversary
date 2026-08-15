@@ -201,13 +201,26 @@
     if (!c) return;
     const i = lines.indexOf(c);
     if (calMode) {
-      const t = Math.round(audio.currentTime * 10) / 10;
+      let t = Math.round((audio.currentTime - 0.6) * 10) / 10;
+      if (t < 0) t = 0;
       LYRICS[i].秒 = t;
       c.classList.add('marked');
       c.innerHTML = LYRICS[i].词 + ' <em>' + fmtTime(t) + '</em>';
       saveCal();
     }
     setActive(i);
+  });
+
+  const exportBtn = $('exportBtn');
+  exportBtn.addEventListener('click', () => {
+    const ta = $('calExport');
+    ta.value = LYRICS.map(function (l, i) {
+      return fmtTime(l.秒) + ' ' + (i + 1) + ' ' + l.词;
+    }).join('\n');
+    ta.classList.add('show');
+    ta.focus();
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
   });
 
   const calBtn = $('calBtn');

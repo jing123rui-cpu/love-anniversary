@@ -357,6 +357,8 @@ body {
   font-family: inherit;
 }
 
+.cal-btn + .cal-btn { margin-left: 10px; }
+
 .cal-btn.on {
   background: var(--rose);
   color: #fff;
@@ -377,6 +379,23 @@ body {
   margin-left: 6px;
   font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
 }
+
+.cal-export {
+  display: none;
+  width: 100%;
+  max-width: 620px;
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px dashed var(--rose);
+  background: #fff;
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.8;
+  resize: none;
+}
+
+.cal-export.show { display: block; }
 
 /* ---------- 彩蛋 ---------- */
 .card3d {

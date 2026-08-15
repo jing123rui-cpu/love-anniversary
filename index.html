@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#ff9aae">
+<title>我们的一周年</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<section class="page" id="sec-cover">
+  <canvas id="heartsCanvas"></canvas>
+  <div class="cover-content">
+    <div class="cover-frame"><img id="coverImg" src="photos/cover/cover.jpg" data-hint="photos/cover/cover.jpg" alt=""></div>
+    <h1 class="cover-title">一周年</h1>
+    <p class="cover-sub">我们在一起的</p>
+    <div class="days-counter"><span id="daysNum">0</span> 天</div>
+    <p class="cover-names" id="coverNames"></p>
+    <p class="cover-date" id="coverDate"></p>
+    <button id="enterBtn" class="enter-btn">开启我们的回忆</button>
+  </div>
+</section>
+
+<section class="page" id="sec-timeline">
+  <h2 class="page-title">我们的时光</h2>
+  <p class="page-sub">从相遇那天起，每一天都值得纪念</p>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<section class="page" id="sec-food">
+  <h2 class="page-title">他做的饭</h2>
+  <p class="page-sub">每一道菜里，都是爱的味道</p>
+  <div class="photo-grid" id="foodGrid"></div>
+</section>
+
+<section class="page" id="sec-travel">
+  <h2 class="page-title">我们的旅行</h2>
+  <p class="page-sub">世界那么大，有你在就好</p>
+  <div class="photo-grid wide" id="travelGrid"></div>
+</section>
+
+<section class="page" id="sec-lyrics">
+  <h2 class="page-title">写给你的歌</h2>
+  <p class="page-sub" id="musicHint"></p>
+  <div class="lyrics-box" id="lyricsBox"></div>
+</section>
+
+<section class="page" id="sec-finale">
+  <h2 class="page-title">一周年快乐</h2>
+  <div class="card3d" id="card3d">
+    <div class="card-face card-front">
+      <p class="card-big">我们的一周年</p>
+      <p class="card-small">点击翻面</p>
+    </div>
+    <div class="card-face card-back">
+      <p class="card-big">谢谢你出现在我的生活里</p>
+      <p class="card-small">不止一年，还要很多年</p>
+    </div>
+  </div>
+  <button id="posterBtn" class="enter-btn">生成纪念海报</button>
+  <p class="tap-hint">点击屏幕任意处，让爱心飞起来</p>
+</section>
+
+<nav class="dots" id="dots"></nav>
+
+<div class="music-btn" id="musicBtn">♪</div>
+<audio id="bgm" loop preload="auto"></audio>
+
+<div class="lightbox" id="lightbox">
+  <img id="lightboxImg" alt="">
+  <p id="lightboxCap"></p>
+</div>
+
+<div class="poster-modal" id="posterModal">
+  <div class="poster-box">
+    <img id="posterImg" alt="">
+    <div class="poster-actions">
+      <a id="savePoster" class="enter-btn" download="我们的纪念海报.png">保存图片</a>
+      <span class="poster-tip">长按图片也可以保存</span>
+    </div>
+    <button class="poster-close" id="posterClose">✕</button>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/qr.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,543 @@
+:root {
+  --rose: #ff6b81;
+  --rose-deep: #e05570;
+  --gold: #d4a96a;
+  --ink: #5c3a43;
+  --bg: #fff5f7;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+.page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 20px 90px;
+  scroll-snap-align: start;
+}
+
+/* ---------- 封面 ---------- */
+#sec-cover {
+  background: linear-gradient(160deg, #fff5f7 0%, #ffe3ea 45%, #ffb8c9 100%);
+  justify-content: flex-start;
+}
+
+#heartsCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cover-content {
+  position: relative;
+  text-align: center;
+  margin-top: 8vh;
+  animation: fadeUp 1.2s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cover-frame {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 26px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 40px rgba(224, 85, 112, 0.3);
+  background: #ffe3ea;
+}
+
+.cover-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cover-title {
+  font-family: "STKaiti", "KaiTi", "楷体", serif;
+  font-size: 58px;
+  letter-spacing: 14px;
+  background: linear-gradient(120deg, #ff6b81, #c2445f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-indent: 14px;
+}
+
+.cover-sub {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #a8717d;
+  letter-spacing: 4px;
+}
+
+.days-counter {
+  margin-top: 18px;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--rose-deep);
+}
+
+.days-counter span {
+  font-size: 58px;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.cover-names {
+  margin-top: 14px;
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: var(--ink);
+}
+
+.cover-date {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #b08892;
+  letter-spacing: 1px;
+}
+
+.enter-btn {
+  display: inline-block;
+  margin-top: 34px;
+  padding: 14px 44px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #ff6b81, #e05570);
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 4px;
+  text-indent: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(224, 85, 112, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+}
+
+.enter-btn:active { transform: scale(0.94); box-shadow: 0 4px 12px rgba(224, 85, 112, 0.3); }
+
+/* ---------- 通用标题 ---------- */
+.page-title {
+  font-family: "STKaiti", "KaiTi", "楷体", serif;
+  font-size: 34px;
+  letter-spacing: 6px;
+  text-indent: 6px;
+  color: var(--rose-deep);
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.page-title::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 10px auto 0;
+}
+
+.page-sub {
+  font-size: 13px;
+  color: #b08892;
+  letter-spacing: 2px;
+  margin-bottom: 26px;
+  text-align: center;
+}
+
+/* ---------- 时光轴 ---------- */
+.timeline {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--gold), var(--rose), transparent);
+}
+
+.tl-item {
+  position: relative;
+  padding: 0 0 30px 62px;
+}
+
+.tl-dot {
+  position: absolute;
+  left: 15px;
+  top: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 5px solid var(--rose);
+  box-shadow: 0 0 0 4px rgba(255, 107, 129, 0.15);
+}
+
+.tl-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 6px 24px rgba(224, 85, 112, 0.12);
+  animation: fadeUp 0.6s ease both;
+}
+
+.tl-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.tl-card h3 {
+  font-size: 17px;
+  color: var(--rose-deep);
+  margin: 12px 2px 4px;
+  font-family: "STKaiti", "KaiTi", "楷体", serif;
+  letter-spacing: 2px;
+}
+
+.tl-date {
+  font-size: 12px;
+  color: var(--gold);
+  margin: 0 2px 8px;
+}
+
+.tl-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #7d5a64;
+  margin: 0 2px;
+}
+
+/* ---------- 照片墙 ---------- */
+.photo-grid {
+  width: 100%;
+  max-width: 640px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.photo-grid.wide {
+  grid-template-columns: 1fr;
+}
+
+.grid-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(224, 85, 112, 0.12);
+  background: #ffe3ea;
+}
+
+.grid-item.wide-item {
+  aspect-ratio: 4 / 3;
+}
+
+.grid-item.wide-item img {
+  object-position: 50% 30%;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.grid-item:active img { transform: scale(1.08); }
+
+.ph {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 2px dashed rgba(224, 85, 112, 0.45);
+  border-radius: 16px;
+  color: #c98a96;
+  font-size: 13px;
+  text-align: center;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.ph small {
+  font-size: 11px;
+  color: #d8a8b1;
+  word-break: break-all;
+}
+
+/* ---------- 歌词 ---------- */
+.lyrics-box {
+  width: 100%;
+  max-width: 620px;
+  height: 58vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 24px 14px;
+  text-align: center;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 6px 24px rgba(224, 85, 112, 0.1);
+  scroll-behavior: smooth;
+}
+
+.lyric {
+  font-family: "STKaiti", "KaiTi", "楷体", serif;
+  font-size: 16px;
+  line-height: 1.9;
+  color: #b08892;
+  padding: 12px 6px;
+  transition: all 0.45s ease;
+  cursor: pointer;
+}
+
+.lyric.passed { color: #d8b0b9; font-size: 14px; }
+
+.lyric.on {
+  font-size: 22px;
+  font-weight: 700;
+  background: linear-gradient(120deg, #ff6b81, #c2445f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- 彩蛋 ---------- */
+.card3d {
+  width: 280px;
+  height: 380px;
+  perspective: 900px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 26px;
+  text-align: center;
+  backface-visibility: hidden;
+  transition: transform 0.8s cubic-bezier(0.3, 0.8, 0.3, 1);
+  box-shadow: 0 14px 40px rgba(224, 85, 112, 0.25);
+}
+
+.card-front {
+  background: linear-gradient(150deg, #ffe3ea, #ffb8c9);
+}
+
+.card-back {
+  background: linear-gradient(150deg, #ff6b81, #c2445f);
+  color: #fff;
+  transform: rotateY(180deg);
+}
+
+.card3d.flipped .card-front { transform: rotateY(180deg); }
+.card3d.flipped .card-back { transform: rotateY(0deg); }
+
+.card-big {
+  font-family: "STKaiti", "KaiTi", "楷体", serif;
+  font-size: 26px;
+  letter-spacing: 3px;
+  line-height: 1.6;
+}
+
+.card-small { font-size: 13px; opacity: 0.75; letter-spacing: 2px; }
+
+.tap-hint {
+  margin-top: 18px;
+  font-size: 12px;
+  color: #c98a96;
+  letter-spacing: 2px;
+}
+
+.f-heart {
+  position: fixed;
+  font-size: 20px;
+  pointer-events: none;
+  z-index: 99;
+  animation: fly 1.4s ease-out both;
+}
+
+@keyframes fly {
+  from { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
+  to { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.6) rotate(var(--rot, 40deg)); }
+}
+
+/* ---------- 导航点 ---------- */
+.dots {
+  position: fixed;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 50;
+}
+
+.dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(224, 85, 112, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dots span.on {
+  background: var(--rose);
+  height: 20px;
+  border-radius: 5px;
+}
+
+/* ---------- 音乐按钮 ---------- */
+.music-btn {
+  position: fixed;
+  right: 18px;
+  bottom: 28px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b81, #e05570);
+  color: #fff;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(224, 85, 112, 0.4);
+  cursor: pointer;
+  z-index: 60;
+  user-select: none;
+}
+
+.music-btn.playing { animation: spin 4s linear infinite; }
+
+.music-btn.no-file { background: #c9b4b8; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- 灯箱 ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(40, 10, 18, 0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 100;
+  padding: 20px;
+}
+
+.lightbox.show { display: flex; }
+
+.lightbox img {
+  max-width: 94vw;
+  max-height: 76vh;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox p {
+  color: #ffe3ea;
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-family: "STKaiti", "KaiTi", "楷体", serif;
+}
+
+/* ---------- 海报弹窗 ---------- */
+.poster-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(40, 10, 18, 0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 110;
+  padding: 24px;
+}
+
+.poster-modal.show { display: flex; }
+
+.poster-box {
+  position: relative;
+  max-width: 420px;
+  width: 100%;
+  background: #fff;
+  border-radius: 18px;
+  padding: 14px;
+  text-align: center;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.poster-box img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+}
+
+.poster-actions {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.poster-tip { font-size: 12px; color: #c98a96; }
+
+.poster-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 107, 129, 0.15);
+  color: var(--rose-deep);
+  font-size: 16px;
+  cursor: pointer;
+}

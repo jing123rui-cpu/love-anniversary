@@ -182,53 +182,9 @@
   audio.addEventListener('loadedmetadata', showTime);
   audio.addEventListener('durationchange', showTime);
 
-  function saveCal() {
-    try { localStorage.setItem('love_anniversary_cal', JSON.stringify(LYRICS.map(function (l) { return l.秒; }))); } catch (e) {}
-  }
-
-  let savedCal = null;
-  try { savedCal = JSON.parse(localStorage.getItem('love_anniversary_cal') || 'null'); } catch (e) {}
-  if (savedCal && savedCal.length === LYRICS.length) {
-    LYRICS.forEach(function (l, i) { l.秒 = savedCal[i]; });
-    lines.forEach(function (c, i) {
-      c.classList.add('marked');
-      c.innerHTML = LYRICS[i].词 + ' <em>' + fmtTime(LYRICS[i].秒) + '</em>';
-    });
-  }
-
   lbx.addEventListener('click', (e) => {
     const c = e.target.closest('.lyric');
-    if (!c) return;
-    const i = lines.indexOf(c);
-    if (calMode) {
-      let t = Math.round((audio.currentTime - 0.6) * 10) / 10;
-      if (t < 0) t = 0;
-      LYRICS[i].秒 = t;
-      c.classList.add('marked');
-      c.innerHTML = LYRICS[i].词 + ' <em>' + fmtTime(t) + '</em>';
-      saveCal();
-    }
-    setActive(i);
-  });
-
-  const exportBtn = $('exportBtn');
-  exportBtn.addEventListener('click', () => {
-    const ta = $('calExport');
-    ta.value = LYRICS.map(function (l, i) {
-      return fmtTime(l.秒) + ' ' + (i + 1) + ' ' + l.词;
-    }).join('\n');
-    ta.classList.add('show');
-    ta.focus();
-    ta.select();
-    try { document.execCommand('copy'); } catch (e) {}
-  });
-
-  const calBtn = $('calBtn');
-  let calMode = false;
-  calBtn.addEventListener('click', () => {
-    calMode = !calMode;
-    calBtn.classList.toggle('on', calMode);
-    calBtn.textContent = calMode ? '校准中：听到哪句点哪句' : '校准歌词';
+    if (c) setActive(lines.indexOf(c));
   });
 
   const dots = $('dots');
